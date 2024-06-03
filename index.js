@@ -20,13 +20,31 @@ function start(client) {
     app.use(bodyParse.urlencoded({extended:true}));
     app.use(bodyParse.json());
 
+    app.options("/welcome", (req, res) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods", "POST");
+        res.header("Access-Control-Allow-Headers", "Content-Type");
+        res.sendStatus(200);
+      });
+    app.options("/", (req, res) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods", "GET");
+        res.header("Access-Control-Allow-Headers", "Content-Type");
+        res.sendStatus(200);
+      });    
     app.get("/", (req,res)=>{
         res.status(200).send({msg:"Hola Javier Ascazuri"});
         client.sendText('5492494480219@c.us', 'Se ha cargado un nuevo Expediente')
     });
+
+
     app.post("/welcome", (req,res)=>{
-        const {username}=rep.body;
-        res.status(200).send({msg:"Hola: "+username});
+        //client.sendText('5492494480219@c.us', 'Se ha cargado un nuevo Expediente');
+        const {username}=req.body;
+        //res.send({msg:"Hola: "+username});
+        console.log("Hola: "+username)
+
+        client.sendText('5492494480219@c.us', 'lo envio:'+username);
     });
 
     app.listen(PORT, () =>{

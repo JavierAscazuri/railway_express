@@ -43,7 +43,7 @@ function start(client) {
         //res.send({msg:"Hola: "+username});
         console.log("Hola: "+username)
 
-        client.sendText('5492494480219@c.us', 'lo envio:'+username);
+        client.sendText('5492494480219@c.us', username);
     });
 
     app.listen(PORT, () =>{

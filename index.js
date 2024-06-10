@@ -33,7 +33,7 @@ function start(client) {
         res.sendStatus(200);
       });    
     app.get("/", (req,res)=>{
-       client.sendText('5492494480219@c.us', 'Se ha cargado un nuevo Expediente')
+       client.sendText('5492494480219@c.us', 'Se ha cargado un Nuevo Expediente')
         res.send({msg:"Hola Javier Ascazuri en este Host"});
        
     });
